@@ -1,0 +1,16 @@
+{
+  "worktrees": {
+    "wt-1774610715768-1": {
+      "branch": "aquamarine-caravan",
+      "path": "/Users/pfo/projects/clone-amaxon/.kilo/worktrees/aquamarine-caravan",
+      "parentBranch": "testing",
+      "createdAt": "2026-03-27T11:25:15.768Z"
+    }
+  },
+  "sessions": {
+    "ses_2d0f56a7bffeYxM1CQW4xOBB2P": {
+      "worktreeId": "wt-1774610715768-1",
+      "createdAt": "2026-03-27T11:25:16.202Z"
+    }
+  }
+}
