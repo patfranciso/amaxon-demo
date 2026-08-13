@@ -13,7 +13,7 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
-import { deleteOrder, getAllOrders } from '@/lib/actions/order';
+import { deleteOrder, getAllOrders } from '@/lib/actions/order.actions';
 import { formatDateTime, formatId } from '@/lib/utils';
 import { IOrderList } from '@/types';
 import ProductPrice from '@/components/shared/product/product-price';

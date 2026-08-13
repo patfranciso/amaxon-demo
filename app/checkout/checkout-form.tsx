@@ -42,7 +42,7 @@ import {
   AVAILABLE_PAYMENT_METHODS,
   DEFAULT_PAYMENT_METHOD,
 } from '@/lib/constants';
-import { createOrder } from '@/lib/actions/order';
+import { createOrder } from '@/lib/actions/order.actions';
 import { toast } from '@/hooks/use-toast';
 
 const shippingAddressDefaultValues =

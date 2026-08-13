@@ -18,7 +18,7 @@ import { cn, formatDateTime } from '@/lib/utils';
 import { buttonVariants } from '@/components/ui/button';
 import ProductPrice from '../product/product-price';
 import ActionButton from '../action-button';
-import { deliverOrder, updateOrderToPaid } from '@/lib/actions/order';
+import { deliverOrder, updateOrderToPaid } from '@/lib/actions/order.actions';
 
 export default function OrderDetailsForm({
   order,

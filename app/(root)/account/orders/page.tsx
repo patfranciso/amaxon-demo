@@ -10,7 +10,7 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
-import { getMyOrders } from '@/lib/actions/order';
+import { getMyOrders } from '@/lib/actions/order.actions';
 import { IOrder } from '@/lib/db/models/order.model';
 import { formatDateTime, formatId } from '@/lib/utils';
 import BrowsingHistoryList from '@/components/shared/browsing-history-list';

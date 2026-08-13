@@ -84,14 +84,13 @@ $ cd amaxon
 - Implemented site settings page with multilingual support and theme/color customization.
 
 **Testing**
-- Set up **Vitest** and **Playwright**.
+- Set up **Playwright**.
 - Added comprehensive E2E tests covering:
   - Product discovery & browsing
   - Product details
   - Cart and checkout
   - Admin dashboard and management
   - Mobile testing scenarios
-- Improved locators, fixtures, and fixed test flakiness.
 
 
 ## Contact Developer

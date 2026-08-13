@@ -2,7 +2,7 @@ import { notFound } from 'next/navigation';
 import React from 'react';
 import Stripe from 'stripe';
 import { auth } from '@/auth';
-import { getOrderById } from '@/lib/actions/order';
+import { getOrderById } from '@/lib/actions/order.actions';
 import PaymentForm from './payment-form';
 
 export const metadata = {
