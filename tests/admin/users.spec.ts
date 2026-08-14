@@ -10,7 +10,7 @@ test.describe('Admin User Management', () => {
   });
 
   // US-2.5.1: As an administrator, I want to view a paginated list of all registered users.
-  test.skip('should display a paginated list of all registered users', async ({
+  test('should display a paginated list of all registered users', async ({
     page,
   }) => {
     // Check pagination controls
@@ -36,7 +36,7 @@ test.describe('Admin User Management', () => {
   });
 
   // US-2.5.2: As an administrator, I want to edit a user's name, email, and role (Admin/User).
-  test.skip("should allow editing a user's name, email, and role", async ({
+  test("should allow editing a user's name, email, and role", async ({
     page,
   }) => {
     // Find a user to edit (e.g., 'Jane' from seed data)
@@ -96,7 +96,7 @@ test.describe('Admin User Management', () => {
   });
 
   // US-2.5.3: As an administrator, I want to delete a user.
-  test.skip('should allow deleting a user', async ({ page }) => {
+  test('should allow deleting a user', async ({ page }) => {
     // Find a user to delete (e.g., 'Jack' from seed data)
     const userEmailToDelete = 'jack@example.com';
     const userIdCell = page

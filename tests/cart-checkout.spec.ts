@@ -207,7 +207,7 @@ test.describe.serial('4.1.3. Cart & Checkout', () => {
     ).toBeVisible();
   });
 
-  test.skip('US-1.3.7: Customer wants to proceed to checkout from the cart page', async ({
+  test('US-1.3.7: Customer wants to proceed to checkout from the cart page', async ({
     page,
   }) => {
     // Add a product to cart (Doc 19)
@@ -223,7 +223,7 @@ test.describe.serial('4.1.3. Cart & Checkout', () => {
     await expect(page.locator('h1', { hasText: 'Checkout' })).toBeVisible();
   });
 
-  test.skip('US-1.3.8: Customer wants to enter shipping address during checkout', async ({
+  test('US-1.3.8: Customer wants to enter shipping address during checkout', async ({
     page,
   }) => {
     await login(page, 'jack@example.com', '123456'); // Login as Jack, who has an address in data.ts

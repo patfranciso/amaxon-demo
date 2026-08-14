@@ -117,7 +117,7 @@ test.describe('User Account Features', () => {
   });
 
   // US-1.4.6: As a logged-in user, I want to edit my name in the "Login & Security" section.
-  test.skip('US-1.4.6: Edit name in "Login & Security" section', async ({
+  test('US-1.4.6: Edit name in "Login & Security" section', async ({
     page,
   }) => {
     const newName = faker.person.fullName();

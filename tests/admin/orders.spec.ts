@@ -10,7 +10,7 @@ test.describe('Admin Order Management', () => {
   });
 
   // US-2.4.1: As an administrator, I want to view a paginated list of all customer orders.
-  test.skip('should display a paginated list of all customer orders', async ({
+  test('should display a paginated list of all customer orders', async ({
     page,
   }) => {
     // Check pagination controls
@@ -73,7 +73,7 @@ test.describe('Admin Order Management', () => {
   });
 
   // US-2.4.3: As an administrator, I want to mark an order as "paid" if the payment method was Cash On Delivery.
-  test.skip('should allow marking a Cash On Delivery order as paid', async ({
+  test('should allow marking a Cash On Delivery order as paid', async ({
     page,
   }) => {
     // Find an order that is COD and not paid (from seed data, Jane has COD orders)
@@ -114,7 +114,7 @@ test.describe('Admin Order Management', () => {
   });
 
   // US-2.4.4: As an administrator, I want to mark an order as "delivered".
-  test.skip('should allow marking an order as delivered', async ({ page }) => {
+  test('should allow marking an order as delivered', async ({ page }) => {
     // Go to the orders page and select the first order's details.
     // Assuming the previous test marked an order as paid, this should now be available for delivery.
     await page.goto('/admin/orders');

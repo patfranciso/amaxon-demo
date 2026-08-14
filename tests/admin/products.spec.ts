@@ -10,7 +10,7 @@ test.describe('Admin Product Management', () => {
   });
 
   // US-2.3.1: As an administrator, I want to view a paginated list of all products, with search and filtering capabilities.
-  test.skip('should display a paginated product list with search', async ({
+  test('should display a paginated product list with search', async ({
     page,
   }) => {
     // Check pagination controls
@@ -50,7 +50,7 @@ test.describe('Admin Product Management', () => {
 
   // US-2.3.2: As an administrator, I want to create a new product, providing details like name, slug, category, images, brand, description, price, list price, stock, tags, sizes, colors, and publication status.
   // US-2.3.5: As an administrator, I want to upload product images directly within the product form. (Integrated here for testing)
-  test.skip('should allow creating a new product with image upload', async ({
+  test('should allow creating a new product with image upload', async ({
     page,
   }) => {
     // Mock the uploadthing API
@@ -144,7 +144,7 @@ test.describe('Admin Product Management', () => {
   });
 
   // US-2.3.4: As an administrator, I want to delete a product.
-  test.skip('should allow deleting a product', async ({ page }) => {
+  test('should allow deleting a product', async ({ page }) => {
     // Find the product to delete
     await page.fill(
       'input[placeholder="Filter name..."]',

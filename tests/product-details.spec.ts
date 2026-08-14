@@ -141,7 +141,7 @@ test.describe('4.1.2. Product Details', () => {
     await page.keyboard.press('Escape'); // Close popover
   });
 
-  test.skip('US-1.2.7: Customer wants to view individual customer reviews', async ({
+  test('US-1.2.7: Customer wants to view individual customer reviews', async ({
     page,
   }) => {
     await page.goto(`/product/${PRODUCT_SLUG}`); // Product p11 has reviews (Doc 16, 17)
@@ -208,7 +208,7 @@ test.describe('4.1.2. Product Details', () => {
     await expect(ratingSummarySection.getByRole('progressbar')).toHaveCount(5); // For 1 to 5 stars
   });
 
-  test.skip('US-1.2.9: Customer wants to write a review for a product', async ({
+  test('US-1.2.9: Customer wants to write a review for a product', async ({
     page,
   }) => {
     await login(page, 'jack@example.com', '123456'); // Login as a regular user (Doc 17)

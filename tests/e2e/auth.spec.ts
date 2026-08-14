@@ -21,7 +21,7 @@ test.describe('Authentication Flows', () => {
   }
 
   // US-1.4.1: As a customer, I want to sign up for a new account using my email and password.
-  test.skip('US-1.4.1: Sign up with email and password', async ({ page }) => {
+  test('US-1.4.1: Sign up with email and password', async ({ page }) => {
     const name = faker.person.fullName();
     const email = faker.internet.email();
     const password = faker.internet.password({ length: 8 });
@@ -91,7 +91,7 @@ test.describe('Authentication Flows', () => {
   });
 
   // US-1.4.2: As a customer, I want to sign in to my existing account using Google.
-  test.skip('US-1.4.2: Sign in with Google (UI interaction only)', async ({
+  test('US-1.4.2: Sign in with Google (UI interaction only)', async ({
     page,
   }) => {
     await page.goto('/sign-in');
