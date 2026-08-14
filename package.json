@@ -5,9 +5,9 @@
   "scripts": {
     "email": "email dev",
     "seed": "NODE_ENV=test npx tsx ./lib/db/seed.ts",
-    "dev": "next dev --turbopack",
+    "dev": "next dev --turbopack --port 3001",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -p 3001",
     "snoop": "tsc --noEmit --watch",
     "test": "vitest",
     "e2e": "rm -rf playwright-report && npx playwright test",

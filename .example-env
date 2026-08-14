@@ -1,4 +1,4 @@
-
+PORT=3001
 NEXT_PUBLIC_APP_NAME=Amaxon
 NEXT_PUBLIC_APP_DESCRIPTION=An Amazon clone built with Next.js, MongoDB, Shadcn
 NEXT_PUBLIC_SERVER_URL=http://localhost:3001

@@ -14,7 +14,7 @@
 
 1. Clone repo
 
-```shell
+```sh
 $ git clone git@github.com:patfranciso/amaxon.git
 $ cd amaxon
 ```
@@ -34,13 +34,13 @@ $ cd amaxon
 
 4. Seed Data
 
-```shell
+```sh
   npm run seed
 ```
 
 5. Install and Run
 
-```shell
+```sh
   npm install --legacy-peer-deps
   npm run dev
 ```
@@ -51,6 +51,15 @@ $ cd amaxon
 - Click Sign In button
 - Enter admin email "admin@example.com" and password "123456" and click Sign In
 
+## Testing with Playwright
+setup mongodb as above
+run the app
+```sh
+npm run dev
+# or
+npm run build 
+npm run start
+```
 
 ## Feature Summary
 
