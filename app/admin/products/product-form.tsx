@@ -20,7 +20,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
 import { createProduct, updateProduct } from '@/lib/actions/product';
 import { IProduct } from '@/lib/db/models/product.model';
-import { UploadButton } from '@/lib/uploadthing';
+import { UploadButton } from '@/components/upload-button';
 import { ProductInputSchema, ProductUpdateSchema } from '@/lib/validator';
 import { Checkbox } from '@/components/ui/checkbox';
 import { toSlug } from '@/lib/utils';
@@ -293,7 +293,6 @@ const ProductForm = ({
                       ))}
                       <FormControl>
                         <UploadButton
-                          endpoint="imageUploader"
                           onClientUploadComplete={(res: { url: string }[]) => {
                             form.setValue('images', [...images, res[0].url]);
                           }}

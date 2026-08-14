@@ -53,15 +53,6 @@ test.describe('Admin Product Management', () => {
   test('should allow creating a new product with image upload', async ({
     page,
   }) => {
-    // Mock the uploadthing API
-    await page.route('**/api/uploadthing', async (route) => {
-      await route.fulfill({
-        status: 200,
-        contentType: 'application/json',
-        body: JSON.stringify([{ url: 'https://utfs.io/f/mock-image-url.jpg' }]),
-      });
-    });
-
     await page.getByRole('link', { name: 'Create Product' }).click();
     await page.waitForURL('/admin/products/create');
     await expect(page.getByText('Products›Create')).toBeVisible();
@@ -81,14 +72,13 @@ test.describe('Admin Product Management', () => {
       'This is a description for the Playwright test product.',
     );
 
-    // Upload image
-    // Find the hidden input for file upload (uploadthing usually uses this)
+    // Upload image via a real upload to /api/upload
     const fileChooserPromise = page.waitForEvent('filechooser');
     await page.getByRole('button', { name: 'Upload Files' }).click(); // The UploadButton trigger
     const fileChooser = await fileChooserPromise;
     await fileChooser.setFiles('./tests/images/test-image.jpg'); // Path to a dummy image in your project
 
-    // After successful mock, the image should appear in the preview
+    // After a successful upload, the image should appear in the preview
     await expect(page.locator('img[alt="product image"]')).toBeVisible();
 
     // Check "Is Published?"
