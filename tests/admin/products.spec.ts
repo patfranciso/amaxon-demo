@@ -14,12 +14,12 @@ test.describe('Admin Product Management', () => {
     page,
   }) => {
     // Check pagination controls
-    await expect(page.getByRole('button', { name: 'Next' })).toBeVisible();
-    await expect(page.getByRole('button', { name: 'Previous' })).toBeDisabled();
+    await expect(page.getByRole('button', { name: 'Next ' })).toBeVisible();
+    await expect(page.getByRole('button', { name: ' Previous' })).toBeDisabled();
 
     // Click next page
-    await page.getByRole('button', { name: 'Next' }).click();
-    await expect(page.getByRole('button', { name: 'Previous' })).toBeEnabled();
+    await page.getByRole('button', { name: 'Next ' }).click();
+    await expect(page.getByRole('button', { name: ' Previous' })).toBeEnabled();
 
     // await expect(page.url()).toContain('page=2')
     await expect(page).toHaveURL('/admin/products');
