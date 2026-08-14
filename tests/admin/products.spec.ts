@@ -14,11 +14,11 @@ test.describe('Admin Product Management', () => {
     page,
   }) => {
     // Check pagination controls
-    await expect(page.getByRole('button', { name: 'Next ' })).toBeVisible();
-    await expect(page.getByRole('button', { name: ' Previous' })).toBeDisabled();
+    await expect(page.getByRole('button', { name: 'Next' }).first()).toBeVisible();
+    await expect(page.getByRole('button', { name: 'Previous' }).first()).toBeDisabled();
 
     // Click next page
-    await page.getByRole('button', { name: 'Next ' }).click();
+    await page.getByRole('button', { name: 'Next ' }).first().click();
     await expect(page.getByRole('button', { name: ' Previous' })).toBeEnabled();
 
     // await expect(page.url()).toContain('page=2')
@@ -87,7 +87,7 @@ test.describe('Admin Product Management', () => {
     await page.getByRole('button', { name: 'Create Product' }).click();
 
     await expect(page).toHaveURL('/admin/products');
-    await expect(page.getByText('Product created successfully')).toBeVisible();
+    await expect(page.getByText('Product created successfully').first()).toBeVisible();
     await expect(
       page.getByRole('cell', { name: 'Playwright Test Product' }),
     ).toBeVisible();
@@ -138,19 +138,19 @@ test.describe('Admin Product Management', () => {
     // Find the product to delete
     await page.fill(
       'input[placeholder="Filter name..."]',
-      'Updated Playwright Product',
+      'adidas Mens Grand Court',
     );
-    await page.waitForTimeout(500);
+    await page.waitForTimeout(1000);
 
     await page
-      .getByRole('row', { name: 'Updated Playwright Product' })
+      .getByRole('row', { name: 'adidas Mens Grand Court' })
       .getByRole('button', { name: 'Delete' })
       .click();
     await page.getByRole('button', { name: 'Delete', exact: true }).click(); // Confirm in dialog
 
     await expect(page.getByText('Product deleted successfully')).toBeVisible();
     await expect(
-      page.getByRole('cell', { name: 'Updated Playwright Product' }),
+      page.getByRole('cell', { name: 'adidas Mens Grand Court' }),
     ).not.toBeVisible();
   });
 
