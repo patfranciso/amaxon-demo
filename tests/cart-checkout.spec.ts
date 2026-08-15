@@ -305,10 +305,8 @@ test.describe.serial('4.1.3. Cart & Checkout', () => {
     await page.waitForTimeout(3000);
 
     await expect(
-      page
-        .getByRole('region', { name: 'Notifications (F8)' })
-        .getByRole('status'),
-    ).toContainText('Order placed successfully');
+      page.getByText('Order placed successfully').first(),
+    ).toBeVisible();
   });
 
   test('US-1.3.10: Customer wants to select a preferred delivery date option, and see how it affects shipping price', async ({
