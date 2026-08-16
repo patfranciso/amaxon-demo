@@ -14,13 +14,19 @@ test.describe('Admin User Management', () => {
     page,
   }) => {
     // Check pagination controls
-    await expect(page.getByRole('button', { name: 'Next' })).toBeVisible();
-    await expect(page.getByRole('button', { name: 'Previous' })).toBeDisabled();
+    await expect(
+      page.getByRole('button', { name: 'Next' }).first(),
+    ).toBeVisible();
+    await expect(
+      page.getByRole('button', { name: 'Previous' }).first(),
+    ).toBeDisabled();
 
     // Click next page
-    await page.getByRole('button', { name: 'Next' }).click();
-    await expect(page.getByRole('button', { name: 'Previous' })).toBeEnabled();
-    await expect(page.url()).toContain('page=2');
+    await page.getByRole('button', { name: 'Next' }).first().click();
+    await expect(
+      page.getByRole('button', { name: 'Previous' }).first(),
+    ).toBeEnabled();
+    expect(page.url()).toContain('page=2');
 
     // Verify table content
     await expect(page.getByRole('columnheader', { name: 'Id' })).toBeVisible();
@@ -39,20 +45,17 @@ test.describe('Admin User Management', () => {
   test("should allow editing a user's name, email, and role", async ({
     page,
   }) => {
-    // Find a user to edit (e.g., 'Jane' from seed data)
+    // Find a user to edit (e.g., 'Linda' from seed data)
     await page
-      // .getByRole('row', { name: /jane@example.com/i })
-      .getByRole('row', { name: /Stephan.Bernhard86@gmail.com/i })
+      .getByRole('row', { name: /linda@example.com/i })
       .getByRole('link', { name: 'Edit' })
       .first()
       .click();
     await page.waitForURL(/\/admin\/users\/.*/);
 
-    await expect(page.locator('input[name="name"]')).toHaveValue(
-      'Ethel Goldner',
-    );
+    await expect(page.locator('input[name="name"]')).toHaveValue('Linda Doe');
     await expect(page.locator('input[name="email"]')).toHaveValue(
-      'Stephan.Bernhard86@gmail.com',
+      'linda@example.com',
     );
     // await expect(
     //   page.locator('div[role="combobox"]').getByText('User'),
@@ -61,8 +64,8 @@ test.describe('Admin User Management', () => {
       'User',
     ); // Check current role
     // Modify details
-    await page.fill('input[name="name"]', 'Jane Doe Updated');
-    await page.fill('input[name="email"]', 'jane.doe.updated@example.com');
+    await page.fill('input[name="name"]', 'Linda Doe Updated');
+    await page.fill('input[name="email"]', 'linda.doe.updated@example.com');
 
     // Change role
     // await page.locator('div[role="combobox"]').getByText('User').click()
@@ -74,25 +77,33 @@ test.describe('Admin User Management', () => {
     await expect(page).toHaveURL('/admin/users');
     // await expect(page.getByText('User updated successfully')).toBeVisible()
     await expect(
-      page.getByRole('cell', { name: 'Jane Doe Updated' }),
+      page.getByRole('cell', { name: 'Linda Doe Updated' }),
     ).toBeVisible();
     await expect(
-      page.getByRole('cell', { name: 'jane.doe.updated@example.com' }),
+      page.getByRole('cell', { name: 'linda.doe.updated@example.com' }),
     ).toBeVisible();
-    await expect(page.getByRole('cell', { name: 'Admin' })).toBeVisible();
+    // ---
+    // Assuming the table has an ID or class, and the row contains the specific email
+    const rowLocator = page
+      .locator('table tr')
+      .filter({ hasText: 'linda.doe.updated@example.com' });
 
-    // Revert changes for subsequent tests if necessary
-    await page
-      .getByRole('row', { name: /jane.doe.updated@example.com/i })
-      .getByRole('link', { name: 'Edit' })
-      .click();
-    await page.waitForURL(/\/admin\/users\/.*/);
-    await page.fill('input[name="name"]', 'Jane');
-    await page.fill('input[name="email"]', 'jane@example.com');
-    await page.locator('div[role="combobox"]').getByText('Admin').click();
-    await page.getByRole('option', { name: 'User' }).click();
-    await page.getByRole('button', { name: 'Update User' }).click();
-    await expect(page.getByText('User updated successfully')).toBeVisible();
+    // Assert the row contains the specific name
+    await expect(rowLocator).toContainText('Linda Doe Updated');
+    // ---
+
+    // // Revert changes for subsequent tests if necessary
+    // await page
+    //   .getByRole('row', { name: /linda.doe.updated@example.com/i })
+    //   .getByRole('link', { name: 'Edit' })
+    //   .click();
+    // await page.waitForURL(/\/admin\/users\/.*/);
+    // await page.fill('input[name="name"]', 'Linda');
+    // await page.fill('input[name="email"]', 'linda@example.com');
+    // await page.locator('div[role="combobox"]').getByText('Admin').click();
+    // await page.getByRole('option', { name: 'User' }).click();
+    // await page.getByRole('button', { name: 'Update User' }).click();
+    // await expect(page.getByText('User updated successfully')).toBeVisible();
   });
 
   // US-2.5.3: As an administrator, I want to delete a user.

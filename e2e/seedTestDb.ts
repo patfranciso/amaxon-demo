@@ -120,7 +120,7 @@ export async function seedTestDb() {
 async function generateTestOrder(
   i: number,
   userIds: mongoose.Types.ObjectId[],
-  products: mongoose.Document<unknown, {}, IProduct>[] &
+  products: mongoose.Document<unknown, object, IProduct>[] &
     Omit<IProduct & { _id: mongoose.Types.ObjectId }, never>[],
 ): Promise<IOrderInput> {
   const user = data.users[i % data.users.length]; // Get original user data for shipping address etc.

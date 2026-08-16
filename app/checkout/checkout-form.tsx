@@ -23,6 +23,7 @@ import {
   calculateFutureDate,
   formatDateTime,
   timeUntilMidnight,
+  toSlug,
 } from '@/lib/utils';
 import { ShippingAddressSchema } from '@/lib/validator';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -460,14 +461,14 @@ const CheckoutForm = () => {
                       onValueChange={(value) => setPaymentMethod(value)}
                     >
                       {AVAILABLE_PAYMENT_METHODS.map((pm) => (
-                        <div key={pm.name} className="flex items-center py-1 ">
+                        <div key={toSlug(pm.name)} className="flex items-center py-1 ">
                           <RadioGroupItem
-                            value={pm.name}
-                            id={`payment-${pm.name}`}
+                            value={toSlug(pm.name)}
+                            id={`payment-${toSlug(pm.name)}`}
                           />
                           <Label
                             className="font-bold pl-2 cursor-pointer"
-                            htmlFor={`payment-${pm.name}`}
+                            htmlFor={`payment-${toSlug(pm.name)}`}
                           >
                             {pm.name}
                           </Label>

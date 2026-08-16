@@ -46,7 +46,7 @@ test.describe('Static Pages', () => {
       await page.goto(`${baseURL}/page/${pageInfo.slug}`);
       await expect(page).toHaveURL(`${baseURL}/page/${pageInfo.slug}`);
       await expect(
-        page.locator('h1', { hasText: pageInfo.title }),
+        page.locator('h1', { hasText: pageInfo.title }).first(),
       ).toBeVisible();
       await expect(page.locator('.web-page-content')).toContainText(
         pageInfo.contentExcerpt,
