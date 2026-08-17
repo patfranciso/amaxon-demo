@@ -1,8 +1,9 @@
+import { DEFAULT_PASSWORD } from '@/lib/constants';
 import { test, expect } from '@playwright/test';
 
 // Define test credentials based on lib/data.ts (Document 141)
 const TEST_EMAIL = 'admin@example.com';
-const TEST_PASSWORD = '123456';
+const TEST_PASSWORD = DEFAULT_PASSWORD;
 const TEST_USER_NAME = 'John'; // Name for 'admin@example.com' from lib/data.ts
 
 test.describe('User Authentication', () => {

@@ -1,7 +1,8 @@
-import  { test, expect } from '@playwright/test';
+import { DEFAULT_PASSWORD } from '@/lib/constants';
+import { test, expect } from '@playwright/test';
 
 test.describe('Authentication', async () => {
-  test('Login', async ({page}) => {
+  test('Login', async ({ page }) => {
     await page.goto('/');
     await page.getByText('Hello, sign in').click();
 
@@ -11,8 +12,8 @@ test.describe('Authentication', async () => {
     await page.fill('input[name="email"]', 'admin@example.com');
 
     // Fill in the password
-    await page.fill('input[name="password"]', '123456');
+    await page.fill('input[name="password"]', DEFAULT_PASSWORD);
     await page.getByRole('button', { name: 'Sign In', exact: true }).click();
     await expect(page.getByText('Hello, John')).toBeVisible();
   });
-})
+});

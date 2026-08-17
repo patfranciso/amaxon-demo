@@ -1,3 +1,4 @@
+import { DEFAULT_PASSWORD } from '@/lib/constants';
 import { Page, expect } from '@playwright/test';
 
 const BASE_URL = 'http://localhost:3001';
@@ -5,7 +6,7 @@ const BASE_URL = 'http://localhost:3001';
 export async function login(
   page: Page,
   email = 'admin@example.com',
-  password = '123456',
+  password = DEFAULT_PASSWORD,
 ) {
   await page.goto(`${BASE_URL}/sign-in`);
   await page.fill('input[name="email"]', email);

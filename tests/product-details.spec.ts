@@ -1,5 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { login } from '../e2e/auth-helper';
+import { DEFAULT_PASSWORD } from '@/lib/constants';
 
 test.describe('4.1.2. Product Details', () => {
   const PRODUCT_SLUG = 'nike-mens-slim-fit-long-sleeve-t-shirt'; // A product from lib/data.ts
@@ -211,7 +212,7 @@ test.describe('4.1.2. Product Details', () => {
   test('US-1.2.9: Customer wants to write a review for a product', async ({
     page,
   }) => {
-    await login(page, 'jack@example.com', '123456'); // Login as a regular user (Doc 17)
+    await login(page, 'jack@example.com', DEFAULT_PASSWORD); // Login as a regular user (Doc 17)
 
     const productForReviewSlug =
       'casio-classic-silver-tone-stainless-steel-band-date-indicator-watch'; // Product p34

@@ -1,5 +1,6 @@
 import { test, expect, Page } from '@playwright/test';
 import { faker } from '@faker-js/faker';
+import { DEFAULT_PASSWORD } from '@/lib/constants';
 
 test.describe('Authentication Flows', () => {
   test.beforeEach(async ({ page }) => {
@@ -54,7 +55,7 @@ test.describe('Authentication Flows', () => {
   // US-1.4.2: As a customer, I want to sign in to my existing account using credentials.
   test('US-1.4.2: Sign in with credentials', async ({ page }) => {
     const email = 'admin@example.com'; // Pre-seeded user from lib/data.ts for development
-    const password = '123456';
+    const password = DEFAULT_PASSWORD;
 
     await page.goto('/sign-in');
     await expect(page).toHaveURL(/sign-in/);
@@ -83,7 +84,7 @@ test.describe('Authentication Flows', () => {
   // US-1.4.7: As a logged-in user, I want to sign out of my account.
   test('US-1.4.7: Sign out of account', async ({ page }) => {
     const email = 'admin@example.com'; // Pre-seeded user
-    const password = '123456';
+    const password = DEFAULT_PASSWORD;
     await loginAsUser(page, email, password);
 
     // Open the user dropdown menu in the header

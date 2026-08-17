@@ -1,9 +1,10 @@
+import { DEFAULT_PASSWORD } from '@/lib/constants';
 import { Page, expect } from '@playwright/test';
 
 export async function adminLogin(page: Page) {
   await page.goto('/sign-in');
   await page.fill('input[name="email"]', 'admin@example.com');
-  await page.fill('input[name="password"]', '123456');
+  await page.fill('input[name="password"]', DEFAULT_PASSWORD);
   await page.getByRole('button', { name: 'Sign In' }).first().click();
   await page.waitForURL('/');
 
@@ -16,7 +17,7 @@ export async function adminLogin(page: Page) {
 export async function regularUserLogin(page: Page) {
   await page.goto('/sign-in');
   await page.fill('input[name="email"]', 'jane@example.com');
-  await page.fill('input[name="password"]', '123456');
+  await page.fill('input[name="password"]', DEFAULT_PASSWORD);
   await page.getByRole('button', { name: 'Sign In' }).first().click();
   await page.waitForURL('/');
   await expect(page).toHaveURL('/');

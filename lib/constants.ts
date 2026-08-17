@@ -61,3 +61,4 @@ export const AVAILABLE_DELIVERY_DATES = [
 ];
 
 export const USER_ROLES = ['Admin', 'User'];
+export const DEFAULT_PASSWORD = '123456';

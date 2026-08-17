@@ -1,10 +1,11 @@
 import { test, expect } from '@playwright/test';
 import { faker } from '@faker-js/faker';
+import { DEFAULT_PASSWORD } from '@/lib/constants';
 
 test.describe('User Account Features', () => {
   const preSeededUser = {
     email: 'admin@example.com',
-    password: '123456',
+    password: DEFAULT_PASSWORD,
     name: 'John Dada',
   };
 

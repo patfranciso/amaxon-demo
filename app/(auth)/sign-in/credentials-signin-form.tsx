@@ -20,13 +20,13 @@ import { toast } from '@/hooks/use-toast';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { UserSignInSchema } from '@/lib/validator';
 import { isRedirectError } from 'next/dist/client/components/redirect-error';
-import { APP_NAME } from '@/lib/constants';
+import { APP_NAME, DEFAULT_PASSWORD } from '@/lib/constants';
 
 const signInDefaultValues =
   process.env.NODE_ENV === 'development'
     ? {
         email: 'admin@example.com',
-        password: '123456',
+        password: DEFAULT_PASSWORD,
       }
     : {
         email: '',

@@ -23,15 +23,15 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { UserSignUpSchema } from '@/lib/validator';
 import { Separator } from '@/components/ui/separator';
 import { isRedirectError } from 'next/dist/client/components/redirect-error';
-import { APP_NAME } from '@/lib/constants';
+import { APP_NAME, DEFAULT_PASSWORD } from '@/lib/constants';
 
 const signUpDefaultValues =
   process.env.NODE_ENV === 'development'
     ? {
         name: 'john doe',
         email: 'john@me.com',
-        password: '123456',
-        confirmPassword: '123456',
+        password: DEFAULT_PASSWORD,
+        confirmPassword: DEFAULT_PASSWORD,
       }
     : {
         name: '',

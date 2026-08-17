@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { login } from '../e2e/auth-helper';
-import { FREE_SHIPPING_MIN_PRICE } from '../lib/constants'; // Use constants for calculation
+import { DEFAULT_PASSWORD, FREE_SHIPPING_MIN_PRICE } from '../lib/constants'; // Use constants for calculation
 
 test.describe('4.1.3. Cart & Checkout', () => {
   const PRODUCT_SLUG = 'nike-mens-slim-fit-long-sleeve-t-shirt';
@@ -210,7 +210,7 @@ test.describe('4.1.3. Cart & Checkout', () => {
     page,
   }) => {
     // Add a product to cart (Doc 19)
-    await login(page, 'jack@example.com', '123456');
+    await login(page, 'jack@example.com', DEFAULT_PASSWORD);
 
     await page.goto(`/product/${PRODUCT_SLUG}`);
     await page.locator('button:has-text("Add to Cart")').click();
@@ -225,7 +225,7 @@ test.describe('4.1.3. Cart & Checkout', () => {
   test('US-1.3.8: Customer wants to enter shipping address during checkout', async ({
     page,
   }) => {
-    await login(page, 'jack@example.com', '123456'); // Login as Jack, who has an address in data.ts
+    await login(page, 'jack@example.com', DEFAULT_PASSWORD); // Login as Jack, who has an address in data.ts
     // Add a product to cart
     await page.goto(`/product/${PRODUCT_SLUG}`);
     await page.locator('button:has-text("Add to Cart")').click();
@@ -266,7 +266,7 @@ test.describe('4.1.3. Cart & Checkout', () => {
   test('US-1.3.9: Customer wants to select a payment method from available options', async ({
     page,
   }) => {
-    await login(page, 'jack@example.com', '123456');
+    await login(page, 'jack@example.com', DEFAULT_PASSWORD);
     // Add a product and navigate to checkout, confirm address
     await page.goto(`/product/${PRODUCT_SLUG}`);
     await page.getByRole('button', { name: 'Add to Cart' }).first().click();
@@ -322,7 +322,7 @@ test.describe('4.1.3. Cart & Checkout', () => {
   });
 
   test('An Order must contain at least one item', async ({ page }) => {
-    await login(page, 'jack@example.com', '123456');
+    await login(page, 'jack@example.com', DEFAULT_PASSWORD);
     await page.goto(`/product/${PRODUCT_SLUG}`);
     // navigate without adding an item
     await page.goto(`/checkout`);
@@ -368,7 +368,7 @@ test.describe('4.1.3. Cart & Checkout', () => {
   test('US-1.3.10: Customer wants to select a preferred delivery date option, and see how it affects shipping price', async ({
     page,
   }) => {
-    await login(page, 'jack@example.com', '123456');
+    await login(page, 'jack@example.com', DEFAULT_PASSWORD);
     // Add a product and navigate to checkout, confirm address and payment
     await page.goto(`/product/${PRODUCT_SLUG}`);
     await page.locator('button:has-text("Add to Cart")').click();
@@ -414,7 +414,7 @@ test.describe('4.1.3. Cart & Checkout', () => {
     page,
   }) => {
     test.setTimeout(60000);
-    await login(page, 'jack@example.com', '123456');
+    await login(page, 'jack@example.com', DEFAULT_PASSWORD);
     // Add product to cart
     await page.goto(`/product/${PRODUCT_SLUG}`);
     await page.locator('button:has-text("Add to Cart")').click();
@@ -458,7 +458,7 @@ test.describe('4.1.3. Cart & Checkout', () => {
     page,
   }) => {
     test.setTimeout(40000);
-    await login(page, 'jack@example.com', '123456');
+    await login(page, 'jack@example.com', DEFAULT_PASSWORD);
     // Add product to cart
     await page.goto(`/product/${PRODUCT_SLUG}`);
     await page.locator('button:has-text("Add to Cart")').click();
