@@ -463,7 +463,7 @@ const CheckoutForm = () => {
                       {AVAILABLE_PAYMENT_METHODS.map((pm) => (
                         <div key={toSlug(pm.name)} className="flex items-center py-1 ">
                           <RadioGroupItem
-                            value={toSlug(pm.name)}
+                            value={pm.name}
                             id={`payment-${toSlug(pm.name)}`}
                           />
                           <Label

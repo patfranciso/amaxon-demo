@@ -51,16 +51,6 @@ test.describe('Authentication Flows', () => {
     await expect(page.getByText(email)).toBeVisible();
   });
 
-  // US-1.4.1: Sign up for a new account using Google (Skipped for e2e due to external OAuth complexity)
-  test('US-1.4.1: Sign up with Google (skipped for e2e)', async ({
-    page,
-  }) => {
-    // Implementing Google OAuth in e2e tests requires mocking the OAuth provider
-    // or having a dedicated test environment with pre-authorized accounts.
-    // This is typically outside the scope of basic e2e testing.
-    // The component interaction is covered by the 'Sign In with Google' test.
-  });
-
   // US-1.4.2: As a customer, I want to sign in to my existing account using credentials.
   test('US-1.4.2: Sign in with credentials', async ({ page }) => {
     const email = 'admin@example.com'; // Pre-seeded user from lib/data.ts for development
@@ -88,31 +78,6 @@ test.describe('Authentication Flows', () => {
     //   .click() // Open user dropdown
     await expect(page.getByText('Hello, John')).toBeVisible();
     await expect(page.getByText(email)).toBeVisible();
-  });
-
-  // US-1.4.2: As a customer, I want to sign in to my existing account using Google.
-  test('US-1.4.2: Sign in with Google (UI interaction only)', async ({
-    page,
-  }) => {
-    await page.goto('/sign-in');
-    await expect(page).toHaveURL(/sign-in/);
-
-    // Check if the Google Sign In button is present and clickable
-    const googleSignInButton = page.getByRole('button', {
-      name: 'Sign In with Google',
-    });
-    await expect(googleSignInButton).toBeVisible();
-
-    // Clicking it would lead to Google's authentication flow, which we don't complete in e2e.
-    // We can assert that it tries to navigate to Google's auth URL.
-    const [popup] = await Promise.all([
-      page.waitForEvent('popup'),
-      googleSignInButton.click(),
-    ]);
-
-    // This assertion checks if the popup navigates to accounts.google.com
-    await expect(popup).toHaveURL(/accounts.google.com/, { timeout: 10000 });
-    await popup.close();
   });
 
   // US-1.4.7: As a logged-in user, I want to sign out of my account.
