@@ -1,4 +1,4 @@
-# Demo ECommerce Website By Next.js 15 & MongoDB
+# Demo ECommerce Website Made using Next.js 15 & MongoDB
 
 |                |                            |
 | -------------- | -------------------------- |
