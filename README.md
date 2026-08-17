@@ -63,6 +63,12 @@ npm run build
 npm run start
 ```
 
+Then run tests with
+
+```sh
+$ npm run e2e
+```
+
 ## Feature Summary
 
 **Core E-Commerce Functionality**
